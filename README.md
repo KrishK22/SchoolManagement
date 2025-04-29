@@ -1,6 +1,19 @@
 
 # School Management
 
+## Features
+
+- Add New Schools.
+- Get Users Nearby Schools in sorted Order.
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`PORT=8080`
+
+`DATABASE_URL=postgresql://neondb_owner:<DB_PASSWORD>@ep-round-sound-a4wrbf2q-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require`
+
 ## Run Locally
 
 Clone the project
@@ -21,6 +34,16 @@ Install dependencies
   npm install
 ```
 
+Prisma Setup
+```bash
+ npx prisma generate 
+```
+
+Build
+```bash
+ npm run build
+```
+
 Start the server
 
 ```bash
@@ -28,6 +51,7 @@ Start the server
 ```
 
 ## API Reference
+`http://localhost:8080`
 
 #### Post New Schools
 
@@ -44,6 +68,7 @@ Start the server
 
 #### Get Schools
 
+
 ```http
   GET /api/listSchools?latitude=${latitude}&longitude=${longitude}
 ```
@@ -54,22 +79,10 @@ Start the server
 | `longitude `| `string` | **Required**. longitude of user|
 
 
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`PORT`
-
-`DATABASE_URL`
-
-## Features
-
-- Add New Schools.
-- Get Users Nearby Schools in sorted Order.
-
 ## Tech Stack
 
-**Server:** Typescript,Node, Express,Prisma
+**Server:** Typescript,Node, Express,Prisma,
+**DB-HOSTING** neon.tech
 
 
 ## Appendix
