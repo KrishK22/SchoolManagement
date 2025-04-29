@@ -1,5 +1,17 @@
 import { client } from '../lib/PrismaClient'
 
+type School={
+    id: number;
+    Name: string;
+    Address: string;
+    latitude: number;
+    longitude: number;
+}
+
+type SchoolWithDistance = School & {
+    distance: number
+}
+
 const haversine = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
     const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -14,9 +26,9 @@ const haversine = (lat1: number, lon1: number, lat2: number, lon2: number): numb
 }
 
 
-export const getNearBySchools = async (userLat: number, userLon: number, radiusKm = 1) => {
+export const getNearBySchools = async (userLat: number, userLon: number, radiusKm = 1): Promise<SchoolWithDistance[]> => {
 
-    const schools = await client.school.findMany({
+    const schools: School[] = await client.school.findMany({
         select: {
             id: true,
             Name: true,
@@ -26,12 +38,14 @@ export const getNearBySchools = async (userLat: number, userLon: number, radiusK
         }
     })
 
+
+
     const nearBy = schools.map(school => {
         const distance = haversine(userLat, userLon, school.latitude, school.longitude)
         return { ...school, distance }
     })
         // .filter(school => school.distance <= radiusKm)
-        .sort((a, b) => a.distance - b.distance) 
+        .sort((a, b) => a.distance - b.distance)
 
     return nearBy;
 
