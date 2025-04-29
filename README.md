@@ -89,6 +89,11 @@ Start the server
 
 PostmanCollection -https://documenter.getpostman.com/view/41257237/2sB2j3BXHk
 
+Deployed Link
+Examples
+POST request- https://schoolmanagement-production-1cdb.up.railway.app/api/addSchool
+GET request -https://schoolmanagement-production-1cdb.up.railway.app/api/listSchools?latitude=12.9600&longitude=77.6200
+
 
 
 
