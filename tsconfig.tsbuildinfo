@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.7.3"}
+{"root":["./src/index.ts","./src/controllers/schoolcontrollers.ts","./src/lib/prismaclient.ts","./src/routes/schoolroutes.ts"],"version":"5.8.3"}
